@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta a Santa</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #2e1e1e76 0%, #ff000063 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 20px;
+    }
+
+    /* Ruleta */
+    .ruleta-container {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 20px;
+    }
+
+    .ruleta-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Cuadro */
+    .container {
+      text-align: center;
+      background: #ffffffdd;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      width: 90%;
+      max-width: 400px;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    button {
+      width: 60%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+      background: #e63946;
+      color: white;
+    }
+
+    button:hover {
+      background: #d62839;
+    }
+
+    .secondary {
+      background: #2526279d;
+    }
+
+    .secondary:hover {
+      background: #386a89;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ruleta de GIFs -->
+  <div class="ruleta-container">
+    <img id="gifRuleta" src="gif1.gif" alt="ruleta" />
+  </div>
+
+  <div class="container">
+    <h1>Carta a Santa de Uly</h1>
+    <button id="btnNuevaCarta">Uly</button>
+    <button class="secondary" id="btnVerCartas">Tikini</button>
+  </div>
+
+  <script>
+    const gifs = ["gif1.gif", "gif2.gif", "gif3.gif","gif4.gif"]; // cámbialos luego
+    const gifElement = document.getElementById("gifRuleta");
+
+    setInterval(() => {
+      const random = Math.floor(Math.random() * gifs.length);
+      gifElement.style.opacity = 0;
+      setTimeout(() => {
+        gifElement.src = gifs[random];
+        gifElement.style.opacity = 1;
+      }, 400);
+    }, 3000); // cada 3 segundos
+
+    document.getElementById("btnNuevaCarta").addEventListener("click", () => {
+      window.location.href = "uly.html";
+    });
+
+    document.getElementById("btnVerCartas").addEventListener("click", () => {
+      alert("Seguimos trabajando");
+    });
+  </script>
+</body>
+</html>
