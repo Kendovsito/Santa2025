@@ -60,7 +60,7 @@
 
     .card h2 {
       margin: 0 0 15px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #333;
     }
 
@@ -91,7 +91,7 @@
       align-items: center;
       opacity: 0;
       pointer-events: none;
-      transition: 0.3s ease;
+      transition: 0.25s ease;
       padding: 20px;
     }
 
@@ -102,28 +102,43 @@
 
     .modal-content {
       background: #ffffff;
-      padding: 20px;
-      border-radius: 20px;
+      padding: 18px;
+      border-radius: 18px;
       width: 90%;
-      max-width: 380px;
+      max-width: 420px;
       max-height: 80vh;
       overflow-y: auto;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+      transform: translateY(8px);
+      transition: transform 0.25s ease;
+    }
+
+    .modal.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
     }
 
     .modal-content img {
       width: 100%;
       border-radius: 12px;
       margin: 10px 0;
-      height: 180px;
+      height: 160px;
       object-fit: contain;
       background: #f3f3f3;
     }
 
     .close-btn {
       background: #457b9d;
-      margin-top: 10px;
+      margin-top: 8px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      cursor: pointer;
     }
 
     .close-btn:hover {
@@ -134,7 +149,8 @@
     .ruleta-container {
       width: 220px;
       height: 220px;
-      margin-top: 40px;
+      margin-top: 36px;
+      margin-bottom: 24px;
     }
 
     .ruleta-container img {
@@ -143,72 +159,167 @@
       object-fit: contain;
       border-radius: 50%;
       transition: opacity 0.4s ease;
+      display: block;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 420px) {
+      .ruleta-container { width: 160px; height: 160px; }
+      .modal-content img { height: 140px; }
     }
   </style>
 </head>
 <body>
 
-<button class="back-btn" onclick="location.href='index.html'">← Inicio</button>
+  <button class="back-btn" onclick="location.href='index.html'">← Inicio</button>
 
-<h1>Mis Regalos</h1>
+  <h1>Mis Regalos</h1>
 
-<div class="grid">
-  <div class="card">
-    <h2>Chamarra (TALLA L - M)</h2>
-    <button class="btn" onclick="abrirModal('modal1')">Referencias</button>
+  <div class="grid">
+    <div class="card">
+      <h2>Chamarra (TALLA L - M)</h2>
+      <button class="btn" data-modal="modal1">Referencias</button>
+    </div>
+
+    <div class="card">
+      <h2>Pants (TALLA L - 31 o 32)</h2>
+      <button class="btn" data-modal="modal2">Referencias</button>
+    </div>
+
+    <div class="card">
+      <h2>Jeans (TALLA L - 31 o 32)</h2>
+      <button class="btn" data-modal="modal3">Referencias</button>
+    </div>
+
+    <div class="card">
+      <h2>Playera Oversize (TALLA XL)</h2>
+      <button class="btn" data-modal="modal4">Referencias</button>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Pants (TALLA L - 31 o 32)</h2>
-    <button class="btn" onclick="abrirModal('modal2')">Referencias</button>
+  <!-- Ruleta -->
+  <div class="ruleta-container" aria-hidden="true">
+    <img id="gifRuleta" src="gif1.gif" alt="ruleta">
   </div>
 
-  <div class="card">
-    <h2>Jeans (TALLA L - 31 o 32)</h2>
-    <button class="btn" onclick="abrirModal('modal3')">Referencias</button>
+  <!-- MODALES con sus imágenes -->
+  <div class="modal" id="modal1" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Chamarra</h3>
+      <img src="chamarra1.jpg" alt="chamarra 1">
+      <img src="chamarra2.jpg" alt="chamarra 2">
+      <img src="chamarra3.jpg" alt="chamarra 3">
+      <img src="chamarra4.jpg" alt="chamarra 4">
+      <img src="chamarra5.jpg" alt="chamarra 5">
+      <img src="chamarra6.jpg" alt="chamarra 6">
+      <button class="close-btn" data-close="modal1">Cerrar</button>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Playera Oversize (TALLA XL)</h2>
-    <button class="btn" onclick="abrirModal('modal4')">Referencias</button>
+  <div class="modal" id="modal2" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Pants</h3>
+      <img src="pants1.jpg" alt="pants 1">
+      <img src="pants2.jpg" alt="pants 2">
+      <img src="pants3.jpg" alt="pants 3">
+      <img src="pants4.jpg" alt="pants 4">
+      <img src="pants5.jpg" alt="pants 5">
+      <img src="pants6.jpg" alt="pants 6">
+      <img src="pants7.jpg" alt="pants 7">
+      <img src="pants8.jpg" alt="pants 8">
+      <img src="pants9.jpg" alt="pants 9">
+      <img src="pants10.jpg" alt="pants 10">
+      <button class="close-btn" data-close="modal2">Cerrar</button>
+    </div>
   </div>
-</div>
 
-<!-- Ruleta -->
-<div class="ruleta-container">
-  <img id="gifRuleta" src="gif1.gif" alt="ruleta">
-</div>
+  <div class="modal" id="modal3" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Jeans</h3>
+      <img src="jeans1.jpg" alt="jeans 1">
+      <img src="jeans2.jpg" alt="jeans 2">
+      <img src="jeans3.jpg" alt="jeans 3">
+      <img src="jeans4.jpg" alt="jeans 4">
+      <button class="close-btn" data-close="modal3">Cerrar</button>
+    </div>
+  </div>
 
-<!-- MODALES (NO LOS REPITO PARA AHORRAR ESPACIO, USA LOS TUYOS) -->
+  <div class="modal" id="modal4" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Playera</h3>
+      <img src="playera1.jpg" alt="playera 1">
+      <img src="playera2.jpg" alt="playera 2">
+      <img src="playera3.jpg" alt="playera 3">
+      <img src="playera4.jpg" alt="playera 4">
+      <img src="playera5.jpg" alt="playera 5">
+      <button class="close-btn" data-close="modal4">Cerrar</button>
+    </div>
+  </div>
 
 <script>
-function abrirModal(id) {
-  document.getElementById(id).classList.add('active');
+/* --------- Abrir / cerrar modales --------- */
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.add('active');
+  m.setAttribute('aria-hidden', 'false');
+  // lock body scroll (simple)
+  document.body.style.overflow = 'hidden';
 }
 
-function cerrarModal(id) {
-  document.getElementById(id).classList.remove('active');
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.remove('active');
+  m.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
 }
 
-function cerrarExterior(e, id) {
-  if (e.target.classList.contains('modal')) {
-    cerrarModal(id);
+/* Delegación para botones "Referencias" y botones "Cerrar" */
+document.addEventListener('click', function(e) {
+  const openBtn = e.target.closest('[data-modal]');
+  if (openBtn) {
+    const id = openBtn.getAttribute('data-modal');
+    openModal(id);
+    return;
   }
-}
 
-/* RUETA DE GIFS — AHORA SÍ FUNCIONA */
+  const closeBtn = e.target.closest('[data-close]');
+  if (closeBtn) {
+    const id = closeBtn.getAttribute('data-close');
+    closeModal(id);
+    return;
+  }
+});
+
+/* Cerrar modal clicando fuera del contenido */
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    // si el clic fue en la capa modal (fondo), ciérralo
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+/* --------- Ruleta de GIFs (funciona si los gifs existen) --------- */
 const gifs = ["gif1.gif", "gif2.gif", "gif3.gif", "gif4.gif"];
 const gifElement = document.getElementById("gifRuleta");
 
-setInterval(() => {
-  const random = Math.floor(Math.random() * gifs.length);
-  gifElement.style.opacity = 0;
-
-  setTimeout(() => {
-    gifElement.src = gifs[random];
-    gifElement.style.opacity = 1;
-  }, 400);
-}, 3000);
+if (gifElement) {
+  setInterval(() => {
+    const random = Math.floor(Math.random() * gifs.length);
+    gifElement.style.opacity = 0;
+    setTimeout(() => {
+      gifElement.src = gifs[random];
+      gifElement.style.opacity = 1;
+    }, 400);
+  }, 3000);
+} else {
+  console.warn('gifRuleta no existe en DOM (asegura el id "gifRuleta")');
+}
 </script>
 
 </body>
